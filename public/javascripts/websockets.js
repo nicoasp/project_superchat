@@ -33,7 +33,7 @@ $(document).ready(function(){
     var nameToAdd = (activeUser === user1) ? user2 : user1;
 
     $newA = $('<a>')
-      .addClass('room')
+      .addClass('user')
       .attr('href', '#')
       .text(nameToAdd);
     $newDiv = $('<div>')
