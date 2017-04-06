@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
 
 router.post('/login', (req, res) => {
 	let username = req.body.username;
-  // create the user in redis
   createUser(username)
   	.then(() => {
 			res.cookie('username', username);
@@ -22,7 +21,7 @@ router.post('/login', (req, res) => {
 })
 
 router.get('/logout', (req, res) => {
-  res.clearCookie('username');
+  //res.clearCookie('username');
   res.redirect('/');
 })
 

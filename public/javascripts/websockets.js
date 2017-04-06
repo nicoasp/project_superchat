@@ -1,7 +1,7 @@
 $(document).ready(function(){
   var socket = io.connect('http://localhost:3000');
 
-  $('.sidebar-nav .room-list').on('click', 'a', function(e){
+  $('.sidebar-nav').on('click', '.room', function(e){
     socket.emit('show messages', $(this).text());
     socket.emit('join room', $(this).text());
     var activeRoom = $('.messages-header h2').text();
@@ -57,9 +57,7 @@ $(document).ready(function(){
         body: messageObj.body
       }
       addMessage($parent, message)
-      console.log($('#roommessages ul li:last').offset().top)
       $("#roomMessages").scrollTop(500);
-
     }
   })
 
@@ -79,10 +77,11 @@ $(document).ready(function(){
       .text(roomName);
     $newDiv = $('<div>')
       .addClass(roomName);
-    $newLi = $('<li>');
+    $newLi = $('<li>')
+      .addClass('room-list');
     $newDiv.append($newA);
     $newLi.append($newDiv);
-    $('.sidebar-nav').append($newLi);
+    $('.dm-header').before($newLi);
     $('.new-channel-form').toggleClass('hidden');
   })
 })

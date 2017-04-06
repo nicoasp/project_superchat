@@ -118,20 +118,20 @@ body {
     background: none;
 }
 
-.channels-header {
+.channels-header, .dm-header {
     border-top:1px solid #fff;
     padding-top:10px;
     margin-bottom:-15px;
 }
 
-.channels-header span {
+.channels-header span, .dm-header span {
     font-size: 1.5em;
     right: 20px;
     position: absolute;
     margin: -3px 0 0 0;
 }
 
-.channels-header span:hover{
+.channels-header span:hover, .dm-header span:hover{
     cursor: pointer;
 }
 
@@ -208,7 +208,7 @@ a.smallest {
 .new-channel-form {
     padding: 0 20px;
 }
-.channels-header p{
+.channels-header p, .dm-header p{
     font-weight: bold;
     text-transform: uppercase;
     color: #AB9BA9;
