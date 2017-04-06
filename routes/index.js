@@ -13,7 +13,7 @@ router.post('/login', (req, res) => {
 			res.cookie('username', username);
 			res.redirect('/chatroom');
 		})
-  	.catch(() => {
+  	.catch((e) => {
   		console.log("In route, user not created")
   		res.redirect('/');
   	})

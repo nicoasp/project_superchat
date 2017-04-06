@@ -10,6 +10,11 @@ $(document).ready(function(){
     }
   })
 
+  $('.sidebar-nav').on('click', '.user', function(e){
+    var author = $("#current-user").text();
+    socket.emit('create private room', author, $(this).text());
+  })
+
   socket.on('show messages', function(roomObj){
     showRooms();
     initializeRoom(roomObj.roomName);
@@ -19,6 +24,28 @@ $(document).ready(function(){
     for (let i=0; i<roomObj.messages.length; i++) {
       addMessage($list, roomObj.messages[i]);
     }
+  })
+
+  socket.on('create private room', function(roomObj){
+    var user1 = roomObj.user1;
+    var user2 = roomObj.user2;
+    var activeUser = $("#current-user").text();
+    var nameToAdd = (activeUser === user1) ? user2 : user1;
+
+    $newA = $('<a>')
+      .addClass('room')
+      .attr('href', '#')
+      .text(nameToAdd);
+    $newDiv = $('<div>')
+      .addClass(nameToAdd);
+    $newLi = $('<li>')
+      .addClass('dm-list');
+    $newDiv.append($newA);
+    $newLi.append($newDiv);
+    $('.dm-header').after($newLi);
+    $('.users-header').toggleClass('hidden');
+    $('.user-list').toggleClass('hidden');
+
   })
 
   socket.on('join room', function(roomObj){
@@ -84,6 +111,9 @@ $(document).ready(function(){
     $('.dm-header').before($newLi);
     $('.new-channel-form').toggleClass('hidden');
   })
+
+
+
 })
 
 function addMessage(parent, message) {
