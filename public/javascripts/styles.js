@@ -7,5 +7,10 @@ $(document).ready(function(){
 
   $('#create-new-channel').click(function(){
     $('.new-channel-form').toggleClass('hidden');
+  });
+
+   $('#create-new-dm').click(function(){
+    $('.users-header').toggleClass('hidden');
+    $('.user-list').toggleClass('hidden');
   })
 })

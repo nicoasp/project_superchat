@@ -28,12 +28,20 @@
           </div>
         </li>
       {{/each}}
-        <li class="users-list">
+      <li class="dm-header users-header hidden">
+        <p>Select a user</p>
+      </li>
+      {{#each usersList as |user|}}
+        <li class="user-list hidden">
+          <div class="{{user}}">
+            <a class="user" href="#">{{user}}</a>
+          </div>
+        </li>
+      {{/each}}
 
-        </li>
-        <li class="dm-header">
-          <p>Direct messages<span id="create-new-dm" class="pull-right">+</span></p>
-        </li>
+      <li class="dm-header">
+        <p>Direct messages<span id="create-new-dm" class="pull-right">+</span></p>
+      </li>
     </ul>
   </div>
   <!-- /#sidebar-wrapper -->
